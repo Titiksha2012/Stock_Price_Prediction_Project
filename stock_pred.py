@@ -58,9 +58,6 @@ lstm_model.add(LSTM(units=50,return_sequences=True,input_shape=(x_train_data.sha
 lstm_model.add(LSTM(units=50))
 lstm_model.add(Dense(1))
 
-
-
-
 lstm_model.compile(loss='mean_squared_error',optimizer='adam')
 lstm_model.fit(x_train_data,y_train_data,epochs=1,batch_size=1,verbose=2)
 
@@ -75,8 +72,8 @@ for i in range(60,inputs_data.shape[0]):
 X_test=np.array(X_test)
 
 X_test=np.reshape(X_test,(X_test.shape[0],X_test.shape[1],1))
-closing_price=model.predict(X_test)
-closing_price=scaler.inverse_transform(closing_price)
+prediction_closing=model.predict(X_test)
+prediction_closing=scaler.inverse_transform(prediction_closing)
 
 lstm_model.save("saved_lstm_model.h5")
 
